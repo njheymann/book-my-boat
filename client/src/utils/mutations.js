@@ -19,6 +19,7 @@ export const ADD_USER = gql`
     $password: String!
     $company: String!
     $location: String!
+    $postcode: String!
   ) {
     addUser(
       username: $username
@@ -26,6 +27,7 @@ export const ADD_USER = gql`
       password: $password
       company: $company
       location: $location
+      postcode: $postcode
     ) {
       token
       user {

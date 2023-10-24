@@ -1,5 +1,8 @@
 const { User, Bookings } = require("../models");
 const { signToken, AuthenticationError } = require("../utils/auth");
+const axios = require("axios");
+require("dotenv").config();
+const API_KEY = process.env.API_KEY;
 
 const resolvers = {
   Query: {
@@ -12,6 +15,11 @@ const resolvers = {
         return userData;
       }
       throw new AuthenticationError("Not logged in");
+    },
+    locations: async (parent, args, context) => {
+      const url = `https://api.willyweather.com.au/v2/${API_KEY}/search.json?query=${args.postcode}`;
+      const response = await axios.get(url);
+      return response.data;
     },
   },
 

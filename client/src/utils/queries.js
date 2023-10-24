@@ -7,8 +7,10 @@ export const GET_ME = gql`
       username
       email
       company
+      postcode
       location
       bookings {
+        _id
         name
         clientemail
         phone
@@ -20,6 +22,18 @@ export const GET_ME = gql`
         description
         wishlist
       }
+    }
+  }
+`;
+
+export const LOCATIONS = gql`
+  query locations($postcode: String!) {
+    locations(postcode: $postcode) {
+      id
+      name
+      region
+      state
+      postcode
     }
   }
 `;

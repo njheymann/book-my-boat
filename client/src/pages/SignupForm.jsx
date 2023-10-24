@@ -13,6 +13,7 @@ const Signup = () => {
     password: "",
     company: "",
     location: "",
+    postcode: "",
   });
   const [addUser, { error, data }] = useMutation(ADD_USER);
 
@@ -33,7 +34,6 @@ const Signup = () => {
       const { data } = await addUser({
         variables: { ...formState },
       });
-      
 
       Auth.login(data.addUser.token);
     } catch (e) {
@@ -92,6 +92,14 @@ const Signup = () => {
                   name="location"
                   type="location"
                   value={formState.location}
+                  onChange={handleChange}
+                />
+                <input
+                  className="form-input"
+                  placeholder="Postcode"
+                  name="postcode"
+                  type="postcode"
+                  value={formState.postcode}
                   onChange={handleChange}
                 />
                 <button

@@ -1,16 +1,16 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useQuery } from "@apollo/client";
-import { GET_ME } from "../utils/queries";
-import { getLocations } from "../utils/weatherAPI";
+import { GET_ME, LOCATIONS } from "../utils/queries";
 
 const Home = () => {
-  const { data } = useQuery(GET_ME);
-  const me = data?.me || data?.user || {};
-  console.log(data);
-  console.log(me);
-
-  getLocations();
+  const { data: userData } = useQuery(GET_ME);
+  const me = userData?.me || {};
+  const { data: locationData } = useQuery(LOCATIONS, {
+    variables: { postcode: me.postcode },
+  });
+  const locations = locationData?.locations || [];
+  console.log(locations);
 
   return (
     <main>
@@ -20,23 +20,20 @@ const Home = () => {
       <h2>Welcome: {me.username}</h2>
       <p>Company: {me.company}</p>
       <p>Location: {me.location} </p>
-      <div>
-        <h3>Bookings</h3>
-        <ul>
-          {me.bookings?.map((booking) => (
-            <li key={booking._id}>
-              <div className="booking-container">
-                <p>{booking.boatname}</p>
-                <p>{booking.date}</p>
-                <div className="client-info">
-                  <p>{booking.clientname}</p>
-                  <p>{booking.clientemail}</p>
-                  <p>{booking.phone}</p>
-                </div>
-              </div>
-            </li>
-          ))}
-        </ul>
+
+      <h3>Bookings</h3>
+      <div className="booking-container">
+        {me.bookings?.map((booking) => (
+          <div key={booking._id} className="booking">
+            <p>{booking.boatname}</p>
+            <p>{booking.date}</p>
+            <div className="client-info">
+              <p>{booking.clientname}</p>
+              <p>{booking.clientemail}</p>
+              <p>{booking.phone}</p>
+            </div>
+          </div>
+        ))}
       </div>
     </main>
   );

@@ -31,6 +31,10 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    postcode: {
+      type: String,
+      required: true,
+    },
     bookings: [bookingSchema.schema],
   },
 
