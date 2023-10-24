@@ -11,6 +11,8 @@ const Signup = () => {
     username: "",
     email: "",
     password: "",
+    company: "",
+    location: "",
   });
   const [addUser, { error, data }] = useMutation(ADD_USER);
 
@@ -31,6 +33,7 @@ const Signup = () => {
       const { data } = await addUser({
         variables: { ...formState },
       });
+      
 
       Auth.login(data.addUser.token);
     } catch (e) {
@@ -73,6 +76,22 @@ const Signup = () => {
                   name="password"
                   type="password"
                   value={formState.password}
+                  onChange={handleChange}
+                />
+                <input
+                  className="form-input"
+                  placeholder="Company name"
+                  name="company"
+                  type="company"
+                  value={formState.company}
+                  onChange={handleChange}
+                />
+                <input
+                  className="form-input"
+                  placeholder="Location"
+                  name="location"
+                  type="location"
+                  value={formState.location}
                   onChange={handleChange}
                 />
                 <button

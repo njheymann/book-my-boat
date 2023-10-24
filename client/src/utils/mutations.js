@@ -13,14 +13,65 @@ export const LOGIN_USER = gql`
 `;
 
 export const ADD_USER = gql`
-  mutation addUser($username: String!, $email: String!, $password: String!) {
-    addUser(username: $username, email: $email, password: $password) {
+  mutation addUser(
+    $username: String!
+    $email: String!
+    $password: String!
+    $company: String!
+    $location: String!
+  ) {
+    addUser(
+      username: $username
+      email: $email
+      password: $password
+      company: $company
+      location: $location
+    ) {
       token
       user {
         _id
         username
         email
       }
+    }
+  }
+`;
+
+export const ADD_BOOKING = gql`
+  mutation addBooking(
+    $name: String!
+    $clientemail: String!
+    $phone: String!
+    $mooring: String!
+    $boatname: String!
+    $typeboat: String!
+    $length: String!
+    $date: String!
+    $description: String!
+    $wishlist: String!
+  ) {
+    addBooking(
+      name: $name
+      clientemail: $clientemail
+      phone: $phone
+      mooring: $mooring
+      boatname: $boatname
+      typeboat: $typeboat
+      length: $length
+      date: $date
+      description: $description
+      wishlist: $wishlist
+    ) {
+      name
+      clientemail
+      phone
+      mooring
+      boatname
+      typeboat
+      length
+      date
+      description
+      wishlist
     }
   }
 `;

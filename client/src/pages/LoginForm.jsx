@@ -5,9 +5,10 @@ import { LOGIN_USER } from "../utils/mutations";
 
 import Auth from "../utils/auth";
 
-const Login = (props) => {
+const Login = () => {
   const [formState, setFormState] = useState({ email: "", password: "" });
-  const [login, { error, data }] = useMutation(LOGIN_USER);
+  const [login, { error }] = useMutation(LOGIN_USER);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   // update state based on form input changes
   const handleChange = (event) => {
@@ -29,6 +30,8 @@ const Login = (props) => {
       });
 
       Auth.login(data.login.token);
+      setLoggedIn(true);
+      window.location.href = "./home";
     } catch (e) {
       console.error(e);
     }
@@ -46,10 +49,10 @@ const Login = (props) => {
         <div className="card">
           <h4 className="card-header bg-dark text-light p-2">Login</h4>
           <div className="card-body">
-            {data ? (
+            {loggedIn ? (
               <p>
                 Success! You may now head{" "}
-                <Link to="/">back to the homepage.</Link>
+                <Link to="/home">back to the homepage.</Link>
               </p>
             ) : (
               <form onSubmit={handleFormSubmit}>
