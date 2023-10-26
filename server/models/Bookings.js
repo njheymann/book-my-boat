@@ -1,6 +1,10 @@
 const { Schema, model } = require("mongoose");
 
 const bookingSchema = new Schema({
+  userId: { type: Schema.ObjectId, ref: "User" },
+  name: {
+    type: String,
+  },
   name: {
     type: String,
   },
@@ -35,6 +39,6 @@ const bookingSchema = new Schema({
   },
 });
 
-const Bookings = model("Bookings", bookingSchema);
+const Bookings = model("Booking", bookingSchema);
 
 module.exports = Bookings;

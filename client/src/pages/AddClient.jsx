@@ -31,7 +31,7 @@ const Booking = () => {
     event.preventDefault();
     console.log(formState);
     try {
-      const { data } = await addBooking({
+      await addBooking({
         variables: { ...formState },
       });
       window.location.href = "./home";

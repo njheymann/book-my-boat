@@ -18,7 +18,7 @@ const ProfileConfig = () => {
     idlocation: "",
   });
 
-  const [addLocation, { error, data }] = useMutation(ADD_LOCATION);
+  const [addLocation] = useMutation(ADD_LOCATION);
 
   const handleAddLocation = (locationid) => {
     setFormState({
@@ -31,7 +31,7 @@ const ProfileConfig = () => {
     event.preventDefault();
     console.log(formState);
     try {
-      const { data } = await addLocation({
+      await addLocation({
         variables: { ...formState },
       });
       window.location.href = "./home";

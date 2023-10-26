@@ -1,8 +1,17 @@
 import { Link, useParams } from "react-router-dom";
-import { useQuery } from "@apollo/client";
+import { useQuery, useMutation } from "@apollo/client";
 import { GET_ME, TIDES, GET_BOOKING } from "../utils/queries";
+import { REMOVE_BOOKING } from "../utils/mutations";
 
 const BookingInfo = () => {
+  const [removeBooking] = useMutation(REMOVE_BOOKING);
+  const deleteBooking = () => {
+    removeBooking({
+      variables: { bookingId: booking._id },
+    });
+    window.location.href = ".././home";
+  };
+
   const { id } = useParams();
   console.log({ id });
   const { data: bookingData } = useQuery(GET_BOOKING, {
@@ -28,6 +37,7 @@ const BookingInfo = () => {
       <button>
         <Link to="/home">Home</Link>
       </button>
+      <button>Edit</button>
       <h1>Booking Info for {booking.name}</h1>
       <p>{booking.date}</p>
       <p>Email: {booking.clientemail}</p>
@@ -40,9 +50,10 @@ const BookingInfo = () => {
       <p>Wishlist: {booking.wishlist}</p>
       {todaysTides.map((tide, index) => (
         <div key={index}>
-          {tide.height}m at {tide.dateTime.split(" ")[1]}
+          {tide.height}m {tide.type} at {tide.dateTime.split(" ")[1]}
         </div>
       ))}
+      <button onClick={deleteBooking}>Delete Booking</button>
     </div>
   );
 };

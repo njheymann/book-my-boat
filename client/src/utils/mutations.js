@@ -87,3 +87,11 @@ export const ADD_LOCATION = gql`
     }
   }
 `;
+
+export const REMOVE_BOOKING = gql`
+  mutation removeBooking($bookingId: ID!) {
+    removeBooking(bookingId: $bookingId) {
+      _id
+    }
+  }
+`;

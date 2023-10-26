@@ -23,8 +23,7 @@ button {
 }
 
 button:hover {
-  background-color: #000000;
-  color: white;
+  color: black;
   box-shadow: 5px 5px 5px grey;
 }
 
@@ -34,7 +33,7 @@ button a {
 }
 
 button a:hover {
-  color: white;
+  color: black;
 }
 
 /* Header */

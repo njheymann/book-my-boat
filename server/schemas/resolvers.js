@@ -54,13 +54,12 @@ const resolvers = {
       if (context.user) {
         const booking = await Bookings.create({
           ...args,
-          user: context.user,
+          userId: context.user._id,
         });
-        console.log(booking);
 
         await User.findOneAndUpdate(
           { _id: context.user._id },
-          { $push: { bookings: booking } },
+          { $push: { bookings: booking._id } },
           { new: true }
         );
 
@@ -76,6 +75,21 @@ const resolvers = {
         );
         return location;
       }
+      throw AuthenticationError;
+    },
+    removeBooking: async (parent, { bookingId }, context) => {
+      if (context.user) {
+        const booking = await Bookings.findOneAndDelete({
+          _id: bookingId,
+          userId: context.user._id,
+        });
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { bookings: bookingId } }
+        );
+        return booking;
+      }
+      throw AuthenticationError;
     },
   },
 };
