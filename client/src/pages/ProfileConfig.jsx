@@ -47,7 +47,7 @@ const ProfileConfig = () => {
         {locations?.map((location) => (
           <div
             onClick={() => handleAddLocation(location.id)}
-            key={location._id}
+            key={location.id}
             className="location"
             value={formState.idlocation}
           >
