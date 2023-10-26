@@ -6,11 +6,12 @@ import { ADD_LOCATION } from "../utils/mutations";
 const ProfileConfig = () => {
   const { data: userData } = useQuery(GET_ME);
   const me = userData?.me || {};
+  console.log({ me });
+
   const { data: locationData } = useQuery(LOCATIONS, {
     variables: { postcode: me.postcode },
   });
   const locations = locationData?.locations || [];
-  console.log(me);
   console.log({ locations });
 
   const [formState, setFormState] = useState({
