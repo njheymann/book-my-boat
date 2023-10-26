@@ -14,7 +14,7 @@ const resolvers = {
 
         return userData;
       }
-      throw new AuthenticationError("Not logged in");
+      throw AuthenticationError;
     },
     booking: async (parent, { bookingId }, context) => {
       return Bookings.findOne({ _id: bookingId });
@@ -36,11 +36,11 @@ const resolvers = {
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
       if (!user) {
-        throw new AuthenticationError("Incorrect credentials");
+        throw AuthenticationError;
       }
       const correctPw = await user.isCorrectPassword(password);
       if (!correctPw) {
-        throw new AuthenticationError("Incorrect credentials");
+        throw AuthenticationError;
       }
       const token = signToken(user);
       return { token, user };
