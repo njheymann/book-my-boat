@@ -35,6 +35,10 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    idlocation: {
+      type: String,
+      required: false,
+    },
     bookings: [bookingSchema.schema],
   },
 

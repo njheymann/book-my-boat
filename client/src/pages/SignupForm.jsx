@@ -36,6 +36,7 @@ const Signup = () => {
       });
 
       Auth.login(data.addUser.token);
+      window.location.href = "./config";
     } catch (e) {
       console.error(e);
     }

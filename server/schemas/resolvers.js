@@ -16,8 +16,17 @@ const resolvers = {
       }
       throw new AuthenticationError("Not logged in");
     },
+    booking: async (parent, { bookingId }, context) => {
+      return Bookings.findOne({ _id: bookingId });
+    },
+
     locations: async (parent, args, context) => {
       const url = `https://api.willyweather.com.au/v2/${API_KEY}/search.json?query=${args.postcode}`;
+      const response = await axios.get(url);
+      return response.data;
+    },
+    tides: async (parent, args, context) => {
+      const url = `https://api.willyweather.com.au/v2/${API_KEY}/locations/${args.idlocation}/weather.json?forecasts=tides&startDate=${args.date}`;
       const response = await axios.get(url);
       return response.data;
     },
@@ -56,6 +65,16 @@ const resolvers = {
         );
 
         return booking;
+      }
+    },
+    addLocation: async (parent, args, context) => {
+      if (context.user) {
+        const location = await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $set: { idlocation: args.idlocation } },
+          { new: true }
+        );
+        return location;
       }
     },
   },

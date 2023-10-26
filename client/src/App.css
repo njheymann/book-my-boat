@@ -3,6 +3,58 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background-color: rgb(245, 244, 244);
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+button {
+  border-radius: 5px;
+  border: 1px solid #000000;
+  background-color: white;
+  padding: 5px;
+  margin: 5px;
+  width: 100px;
+  height: 25px;
+  color: black;
+}
+
+button:hover {
+  background-color: #000000;
+  color: white;
+  box-shadow: 5px 5px 5px grey;
+}
+
+button a {
+  text-decoration: none;
+  color: #000000;
+}
+
+button a:hover {
+  color: white;
+}
+
+/* Header */
+header {
+  align-items: center;
+  background-color: rgb(219, 211, 211);
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.header-contents h1 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.header-contents button {
+  margin: 0;
+  margin-left: auto;
 }
 
 /* Main Page */
@@ -12,15 +64,57 @@
   justify-content: center;
   align-items: start;
   margin: 10px;
-  border: 1px solid #000000;
+
   background-color: white;
   border-radius: 5px;
   width: 200px;
   height: 200px;
   padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+    rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
+    rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+.booking:hover {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 .booking-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(219, 211, 211);
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px;
+  width: 97%;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.welcome-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.welcome-info {
+  width: 200px;
+
+  border-radius: 5px;
+}
+
+.todays-tides {
+  width: 200px;
+
+  border-radius: 5px;
+}
+
+/* Config Page */
+.location-container {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -30,4 +124,20 @@
   border: 1px solid black;
   padding: 10px;
   width: 100%;
+  height: 500px;
+  overflow: auto;
+}
+
+.location {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  border: 1px solid #000000;
+  background-color: white;
+  border-radius: 5px;
+  width: 200px;
+  height: 100px;
+  padding: 10px;
 }

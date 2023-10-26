@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import { useMutation } from "@apollo/client";
 import { ADD_BOOKING } from "../utils/mutations";
 
@@ -35,6 +34,7 @@ const Booking = () => {
       const { data } = await addBooking({
         variables: { ...formState },
       });
+      window.location.href = "./home";
     } catch (e) {
       console.error(e);
     }

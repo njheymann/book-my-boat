@@ -7,6 +7,8 @@ import Signup from "./pages/SignupForm";
 import Login from "./pages/LoginForm";
 import Home from "./pages/Home";
 import Booking from "./pages/AddClient";
+import ProfileConfig from "./pages/ProfileConfig";
+import BookingInfo from "./pages/BookingInfo";
 
 const router = createBrowserRouter([
   {
@@ -27,6 +29,14 @@ const router = createBrowserRouter([
         element: <Signup />,
       },
       { path: "/booking", element: <Booking /> },
+      {
+        path: "/config",
+        element: <ProfileConfig />,
+      },
+      {
+        path: "/bookinginfo/:id",
+        element: <BookingInfo />,
+      },
     ],
   },
 ]);

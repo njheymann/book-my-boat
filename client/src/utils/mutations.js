@@ -20,6 +20,7 @@ export const ADD_USER = gql`
     $company: String!
     $location: String!
     $postcode: String!
+    $idlocation: String
   ) {
     addUser(
       username: $username
@@ -28,6 +29,7 @@ export const ADD_USER = gql`
       company: $company
       location: $location
       postcode: $postcode
+      idlocation: $idlocation
     ) {
       token
       user {
@@ -74,6 +76,14 @@ export const ADD_BOOKING = gql`
       date
       description
       wishlist
+    }
+  }
+`;
+
+export const ADD_LOCATION = gql`
+  mutation addLocation($idlocation: String!) {
+    addLocation(idlocation: $idlocation) {
+      idlocation
     }
   }
 `;
