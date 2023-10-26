@@ -3,6 +3,7 @@ import { useQuery } from "@apollo/client";
 import { GET_ME, LOCATIONS, TIDES } from "../utils/queries";
 
 const Home = () => {
+  // Format dates for tide query
   const todaysDate = new Date();
   const year = todaysDate.getFullYear();
   const month = String(todaysDate.getMonth() + 1).padStart(2, "0");
@@ -10,24 +11,36 @@ const Home = () => {
   const formattedDate = `${year}-${month}-${day}`;
   console.log(formattedDate);
 
+  // Grab user data
   const { data: userData } = useQuery(GET_ME);
   const me = userData?.me || {};
   console.log({ me });
   console.log(me.bookings);
 
+  // Inject user data into location query
   const { data: locationData } = useQuery(LOCATIONS, {
     variables: { postcode: me.postcode },
   });
   const locations = locationData?.locations || [];
   console.log({ locations });
 
+  // Inject user data and formatted date into tide query
   const { data: tideData } = useQuery(TIDES, {
     variables: { idlocation: me.idlocation, date: formattedDate },
   });
   const tides = tideData?.tides || [];
 
+  // Grab todays tides and set as an object
   const todaysTides = tides.forecasts?.tides?.days[0]?.entries || [];
   console.log({ todaysTides });
+
+  // Sort bookings by date in ascending order
+  const sortedBookings = me.bookings?.slice().sort((a, b) => {
+    const dateA = new Date(a.date);
+    const dateB = new Date(b.date);
+
+    return dateA - dateB;
+  });
 
   return (
     <main>
@@ -52,7 +65,7 @@ const Home = () => {
       </button>
       <h3>Bookings</h3>
       <div className="booking-container">
-        {me.bookings?.map((booking) => (
+        {sortedBookings?.map((booking) => (
           <Link to={`/bookinginfo/${booking._id}`} key={booking._id}>
             <div key={booking._id} className="booking">
               <p>{booking.date}</p>
@@ -62,17 +75,6 @@ const Home = () => {
                 <p>{booking.name}</p>
                 <p>{booking.clientemail}</p>
                 <p>{booking.phone}</p>
-                <p>Tides for this booking:</p>
-                <div>
-                  {/* {singleBooking
-                    .filter((tide) => tide.dateTime.includes(booking.date)) // Match tides with the booking date
-                    .map((matchedTide, index) => (
-                      <div key={index}>
-                        {matchedTide.height}m at{" "}
-                        {matchedTide.dateTime.split(" ")[1]}
-                      </div>
-                    ))} */}
-                </div>
               </div>
             </div>
           </Link>
