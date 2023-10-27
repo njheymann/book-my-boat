@@ -95,3 +95,44 @@ export const REMOVE_BOOKING = gql`
     }
   }
 `;
+
+export const EDIT_BOOKING = gql`
+  mutation updateBooking(
+    $name: String
+    $clientemail: String
+    $phone: String
+    $bookingId: ID!
+    $wishlist: String
+    $mooring: String
+    $boatname: String
+    $typeboat: String
+    $length: String
+    $date: String
+    $description: String
+  ) {
+    updateBooking(
+      name: $name
+      clientemail: $clientemail
+      phone: $phone
+      bookingId: $bookingId
+      wishlist: $wishlist
+      mooring: $mooring
+      boatname: $boatname
+      typeboat: $typeboat
+      length: $length
+      date: $date
+      description: $description
+    ) {
+      clientemail
+      phone
+      name
+      date
+      boatname
+      description
+      length
+      mooring
+      typeboat
+      wishlist
+    }
+  }
+`;

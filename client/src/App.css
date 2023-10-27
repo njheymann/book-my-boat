@@ -1,9 +1,26 @@
 #root {
   max-width: 1280px;
+  border-radius: 5px;
   margin: 0 auto;
+  margin-top: 50px;
   padding: 2rem;
   text-align: center;
-  background-color: rgb(245, 244, 244);
+  background-color: #fcfcfc;
+  font-family: "Playfair", serif;
+}
+
+::-webkit-scrollbar {
+  display: none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+body {
+  background-color: #3f4045;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 a {
@@ -13,18 +30,21 @@ a {
 
 button {
   border-radius: 5px;
-  border: 1px solid #000000;
+
   background-color: white;
   padding: 5px;
   margin: 5px;
   width: 100px;
   height: 25px;
   color: black;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+    rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
 }
 
 button:hover {
   color: black;
-  box-shadow: 5px 5px 5px grey;
+  box-shadow: 0px 0px 0px 0px;
+  border: 1px solid #30292f;
 }
 
 button a {
@@ -36,12 +56,20 @@ button a:hover {
   color: black;
 }
 
+input {
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+    rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+  border-radius: 5px;
+  border: none;
+}
+
 /* Header */
 header {
   align-items: center;
-  background-color: rgb(219, 211, 211);
+  background-color: #30292f;
   border: 1px solid black;
   padding: 10px;
+  color: white;
 }
 
 .header-contents h1 {
@@ -49,6 +77,7 @@ header {
   font-size: 2rem;
   font-weight: bold;
   margin: 0;
+  color: #fcfcfc;
 }
 
 .header-contents button {
@@ -100,6 +129,15 @@ header {
   gap: 10px;
 }
 
+.new-booking button {
+  margin-top: 10px;
+  border: none;
+}
+
+.new-booking button:hover {
+  border: 0.1px solid grey;
+}
+
 .welcome-info {
   width: 200px;
 
@@ -119,9 +157,9 @@ header {
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  background-color: aqua;
+  background-color: #5d737e;
   border: 1px solid black;
-  padding: 10px;
+  border-radius: 5px;
   width: 100%;
   height: 500px;
   overflow: auto;
@@ -139,4 +177,65 @@ header {
   width: 200px;
   height: 100px;
   padding: 10px;
+}
+
+.selected {
+  background-color: #02111b;
+  color: white;
+}
+
+.location-confirm button {
+  margin-top: 10px;
+  border: none;
+}
+
+.location-confirm button:hover {
+  border: 0.1px solid grey;
+}
+
+/* Login Form */
+.card-body input {
+  border: none;
+  margin: 5px;
+  height: 20px;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+    rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+}
+
+.card-body button {
+  margin-top: 10px;
+  border: none;
+}
+
+.card-body button:hover {
+  border: 0.1px solid grey;
+}
+
+/* Signup Form */
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  background-color: #fcfcfc;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.signup-form input {
+  border: none;
+  margin: 5px;
+  height: 20px;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
+    rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+}
+
+.signup-form button {
+  margin-top: 10px;
+  border: none;
+}
+
+.signup-form button:hover {
+  border: 0.1px solid grey;
 }

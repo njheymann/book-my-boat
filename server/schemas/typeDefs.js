@@ -75,6 +75,7 @@ type Mutation {
         length: String!, date: String!, description: String!, wishlist: String!): Booking
     addLocation(idlocation: String!): User
     removeBooking(bookingId: ID!): Booking
+    updateBooking(bookingId: ID!, name: String, clientemail: String, phone: String, mooring: String, boatname: String, typeboat: String, length: String, date: String, description: String, wishlist: String): Booking
 }
 `;
 

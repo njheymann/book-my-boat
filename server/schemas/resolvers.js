@@ -91,6 +91,14 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
+    updateBooking: async (parent, { bookingId, ...args }, context) => {
+      const booking = await Bookings.findOneAndUpdate(
+        { _id: bookingId },
+        { $set: args },
+        { new: true }
+      );
+      return booking;
+    },
   },
 };
 

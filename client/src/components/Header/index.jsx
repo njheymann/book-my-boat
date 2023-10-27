@@ -11,29 +11,14 @@ const Header = () => {
   return (
     <header>
       <div className="header-contents">
-        <h1 className="m-0">Book My Boat</h1>
-
         <div>
           {Auth.loggedIn() ? (
             <>
-              <button className="btn btn-lg btn-light m-2" onClick={logout}>
-                Logout
-              </button>
+              <h1>Book My Boat</h1>
+              <button onClick={logout}>Logout</button>
             </>
           ) : (
-            <>
-              <button>
-                {" "}
-                <Link className="btn btn-lg btn-info m-2" to="/">
-                  Login
-                </Link>
-              </button>
-              <button>
-                <Link className="btn btn-lg btn-light m-2" to="/signup">
-                  Signup
-                </Link>
-              </button>
-            </>
+            <h1>Book My Boat</h1>
           )}
         </div>
       </div>

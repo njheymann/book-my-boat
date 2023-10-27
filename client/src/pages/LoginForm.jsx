@@ -44,10 +44,10 @@ const Login = () => {
   };
 
   return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10">
+    <main>
+      <div>
         <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Login</h4>
+          <p>Bookings and tides...all in the one place</p>
           <div className="card-body">
             {loggedIn ? (
               <p>
@@ -77,7 +77,11 @@ const Login = () => {
                   style={{ cursor: "pointer" }}
                   type="submit"
                 >
-                  Submit
+                  Login
+                </button>
+                <p>Not registered?</p>
+                <button>
+                  <Link to="/signup">Signup</Link>
                 </button>
               </form>
             )}

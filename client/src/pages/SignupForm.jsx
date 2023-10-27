@@ -43,11 +43,11 @@ const Signup = () => {
   };
 
   return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10">
-        <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
-          <div className="card-body">
+    <main>
+      <div>
+        <h4>Sign Up</h4>
+        <div className="signup-form">
+          <div>
             {data ? (
               <p>
                 Success! You may now head{" "}
@@ -103,6 +103,7 @@ const Signup = () => {
                   value={formState.postcode}
                   onChange={handleChange}
                 />
+                <br></br>
                 <button
                   className="btn btn-block btn-primary"
                   style={{ cursor: "pointer" }}

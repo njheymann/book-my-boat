@@ -60,9 +60,11 @@ const Home = () => {
           ))}
         </div>
       </div>
-      <button>
-        <Link to="/booking">New Booking</Link>
-      </button>
+      <div className="new-booking">
+        <button className="new-booking">
+          <Link to="/booking">New Booking</Link>
+        </button>
+      </div>
       <h3>Bookings</h3>
       <div className="booking-container">
         {sortedBookings?.map((booking) => (

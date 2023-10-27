@@ -42,13 +42,15 @@ const ProfileConfig = () => {
 
   return (
     <main>
-      <h1>Choose your Location:</h1>
+      <h4>Choose your Location:</h4>
       <div className="location-container">
         {locations?.map((location) => (
           <div
             onClick={() => handleAddLocation(location.id)}
             key={location.id}
-            className="location"
+            className={`location ${
+              formState.idlocation === location.id ? "selected" : ""
+            }`}
             value={formState.idlocation}
           >
             <p>
@@ -57,6 +59,8 @@ const ProfileConfig = () => {
             </p>
           </div>
         ))}
+      </div>
+      <div className="location-confirm">
         <form onSubmit={handleFormSubmit}>
           <button type="submit">Confirm</button>
         </form>
