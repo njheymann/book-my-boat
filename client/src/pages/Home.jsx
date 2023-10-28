@@ -46,13 +46,13 @@ const Home = () => {
     <main>
       <div className="welcome-container">
         <div className="welcome-info">
-          <h3>Welcome {me.username}</h3>
+          <h4>Welcome {me.username}</h4>
           <p>Company {me.company}</p>
           <p>Location {me.location} </p>
         </div>
 
         <div className="todays-tides">
-          <h3>Todays tides</h3>
+          <h4>Todays tides</h4>
           {todaysTides.map((tide, index) => (
             <div key={index}>
               {tide.height}m at {tide.dateTime.split(" ")[1]}
@@ -70,14 +70,11 @@ const Home = () => {
         {sortedBookings?.map((booking) => (
           <Link to={`/bookinginfo/${booking._id}`} key={booking._id}>
             <div key={booking._id} className="booking">
-              <p>{booking.date}</p>
-              <p>{booking.boatname}</p>
-
-              <div className="client-info">
-                <p>{booking.name}</p>
-                <p>{booking.clientemail}</p>
-                <p>{booking.phone}</p>
-              </div>
+              <h3>{booking.date}</h3>
+              <p>Client: {booking.name}</p>
+              <p>Name of boat: {booking.boatname}</p>
+              <p>{booking.length}</p>
+              <p>Click for more info</p>
             </div>
           </Link>
         ))}

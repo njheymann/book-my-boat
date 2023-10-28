@@ -30,7 +30,7 @@ a {
 
 button {
   border-radius: 5px;
-
+  cursor: pointer;
   background-color: white;
   padding: 5px;
   margin: 5px;
@@ -44,7 +44,6 @@ button {
 button:hover {
   color: black;
   box-shadow: 0px 0px 0px 0px;
-  border: 1px solid #30292f;
 }
 
 button a {
@@ -59,7 +58,7 @@ button a:hover {
 input {
   box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px,
     rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
-  border-radius: 5px;
+  border-radius: 2px;
   border: none;
 }
 
@@ -69,7 +68,8 @@ header {
   background-color: #30292f;
   border: 1px solid black;
   padding: 10px;
-  color: white;
+  color: #fcfcfc;
+  box-shadow: #30292f 0px 4px 8px -2px, #30292f 0px 0px 0px 1px;
 }
 
 .header-contents h1 {
@@ -85,6 +85,11 @@ header {
   margin-left: auto;
 }
 
+.header-contents button:hover {
+  border: 0.1px solid #fcfcfc;
+  box-shadow: #fcfcfc 0px 3px 8px;
+}
+
 /* Main Page */
 .booking {
   display: flex;
@@ -92,11 +97,10 @@ header {
   justify-content: center;
   align-items: start;
   margin: 10px;
-
-  background-color: white;
+  background-color: #fcfcfc;
   border-radius: 5px;
   width: 200px;
-  height: 200px;
+  height: 300px;
   padding: 10px;
   box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
     rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
@@ -105,19 +109,12 @@ header {
 
 .booking:hover {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  background-color: #02111b;
+  color: white;
 }
 
 .booking-container {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  background-color: rgb(219, 211, 211);
-  border: 1px solid black;
-  border-radius: 5px;
   padding: 10px;
-  width: 97%;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
@@ -151,7 +148,8 @@ header {
 }
 
 /* Config Page */
-.location-container {
+.location-container,
+.booking-container {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -160,7 +158,6 @@ header {
   background-color: #5d737e;
   border: 1px solid black;
   border-radius: 5px;
-  width: 100%;
   height: 500px;
   overflow: auto;
 }
@@ -238,4 +235,72 @@ header {
 
 .signup-form button:hover {
   border: 0.1px solid grey;
+}
+
+/* Add client page */
+
+.add-client-form button {
+  margin-top: 10px;
+  border: none;
+  box-shadow: #fcfcfc 0px 4px 8px -2px, #fcfcfc 0px 0px 0px 1px;
+}
+
+.add-client-form button:hover {
+  border: 0.1px solid grey;
+  box-shadow: none;
+}
+
+.add-client-form input,
+.booking-info input {
+  display: flex;
+  border: none;
+  margin: 10px;
+  width: 80%;
+  padding: 10px;
+  box-shadow: #fcfcfc 0px 4px 8px -2px, #fcfcfc 0px 0px 0px 1px;
+}
+
+.description,
+.wishlist {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #fcfcfc;
+  border-radius: 2px;
+  padding: 10px;
+}
+
+/* Booking info page */
+
+.booking-info,
+.add-client-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  margin: 10px;
+  color: #fcfcfc;
+  background-color: #5d737e;
+  border-radius: 5px;
+  width: 300px;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+    rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
+    rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+.booking-info button {
+  width: 200px;
+  margin: 10px;
+  border: none;
+  box-shadow: #fcfcfc 0px 4px 8px -2px, #fcfcfc 0px 0px 0px 1px;
+}
+
+.booking-info button:hover {
+  border: 0.1px solid grey;
+  box-shadow: none;
+}
+
+.booking-info input {
+  height: 5px;
 }

@@ -69,7 +69,7 @@ const BookingInfo = () => {
       await editBooking({
         variables: { ...formState, bookingId: booking._id },
       });
-      window.location.href = ".././home";
+      window.location.href = `../bookinginfo/${booking._id}`;
     } catch (e) {
       console.error(e);
     }
@@ -77,116 +77,117 @@ const BookingInfo = () => {
 
   return (
     <div>
+      <h3>Booking Info for {booking.name}</h3>
       <button>
         <Link to="/home">Home</Link>
       </button>
       <button onClick={toggleEditMode}>Edit</button>
-      <h1>Booking Info for {booking.name}</h1>
-
-      {editMode ? (
-        <form onSubmit={handleEditFormSubmit}>
-          <p>Edit here</p>
-          <input
-            className="form-input"
-            placeholder={booking.name}
-            name="name"
-            type="text"
-            value={formState.name}
-            onChange={handleEditBooking}
-          />
-          <input
-            className="form-input"
-            placeholder={booking.clientemail}
-            name="clientemail"
-            type="email"
-            value={formState.clientemail}
-            onChange={handleEditBooking}
-          />
-          <input
-            className="form-input"
-            placeholder={booking.phone}
-            name="phone"
-            type="text"
-            value={formState.phone}
-            onChange={handleEditBooking}
-          />
-          <input
-            className="form-input"
-            placeholder={booking.mooring}
-            name="mooring"
-            type="text"
-            value={formState.mooring}
-            onChange={handleEditBooking}
-          />
-          <input
-            className="form-input"
-            placeholder={booking.boatname}
-            name="boatname"
-            type="text"
-            value={formState.boatname}
-            onChange={handleEditBooking}
-          />
-          <input
-            className="form-input"
-            placeholder={booking.typeboat}
-            name="typeboat"
-            type="text"
-            value={formState.typeboat}
-            onChange={handleEditBooking}
-          />
-          <input
-            className="form-input"
-            placeholder={booking.length}
-            name="length"
-            type="text"
-            value={formState.length}
-            onChange={handleEditBooking}
-          />
-          <input
-            className="form-input"
-            placeholder={booking.date}
-            name="date"
-            type="date"
-            value={formState.date}
-            onChange={handleEditBooking}
-          />
-          <input
-            className="form-input"
-            placeholder={booking.description}
-            name="description"
-            type="text"
-            value={formState.description}
-            onChange={handleEditBooking}
-          />
-          <input
-            className="form-input"
-            placeholder={booking.wishlist}
-            name="wishlist"
-            type="text"
-            value={formState.wishlist}
-            onChange={handleEditBooking}
-          />
-          <button type="submit  ">Save Changes</button>
-        </form>
-      ) : (
-        <div>
-          <p>{booking.date}</p>
-          <p>Email: {booking.clientemail}</p>
-          <p>Phone: {booking.phone}</p>
-          <p>Mooring: {booking.mooring}</p>
-          <p>Boat Name: {booking.boatname}</p>
-          <p>Type of Boat: {booking.typeboat}</p>
-          <p>Length: {booking.length}</p>
-          <p>Description: {booking.description}</p>
-          <p>Wishlist: {booking.wishlist}</p>
-          {todaysTides.map((tide, index) => (
-            <div key={index}>
-              {tide.height}m {tide.type} at {tide.dateTime.split(" ")[1]}
-            </div>
-          ))}
-          <button onClick={deleteBooking}>Delete Booking</button>
-        </div>
-      )}
+      <div className="booking-info">
+        {editMode ? (
+          <form onSubmit={handleEditFormSubmit}>
+            <input
+              className="form-input"
+              placeholder={booking.name}
+              name="name"
+              type="text"
+              value={formState.name}
+              onChange={handleEditBooking}
+            />
+            <input
+              className="form-input"
+              placeholder={booking.clientemail}
+              name="clientemail"
+              type="email"
+              value={formState.clientemail}
+              onChange={handleEditBooking}
+            />
+            <input
+              className="form-input"
+              placeholder={booking.phone}
+              name="phone"
+              type="text"
+              value={formState.phone}
+              onChange={handleEditBooking}
+            />
+            <input
+              className="form-input"
+              placeholder={booking.mooring}
+              name="mooring"
+              type="text"
+              value={formState.mooring}
+              onChange={handleEditBooking}
+            />
+            <input
+              className="form-input"
+              placeholder={booking.boatname}
+              name="boatname"
+              type="text"
+              value={formState.boatname}
+              onChange={handleEditBooking}
+            />
+            <input
+              className="form-input"
+              placeholder={booking.typeboat}
+              name="typeboat"
+              type="text"
+              value={formState.typeboat}
+              onChange={handleEditBooking}
+            />
+            <input
+              className="form-input"
+              placeholder={booking.length}
+              name="length"
+              type="text"
+              value={formState.length}
+              onChange={handleEditBooking}
+            />
+            <input
+              className="form-input"
+              placeholder={booking.date}
+              name="date"
+              type="date"
+              value={formState.date}
+              onChange={handleEditBooking}
+            />
+            <input
+              className="form-input"
+              placeholder={booking.description}
+              name="description"
+              type="text"
+              value={formState.description}
+              onChange={handleEditBooking}
+            />
+            <input
+              className="form-input"
+              placeholder={booking.wishlist}
+              name="wishlist"
+              type="text"
+              value={formState.wishlist}
+              onChange={handleEditBooking}
+            />
+            <button type="submit  ">Save Changes</button>
+          </form>
+        ) : (
+          <div>
+            <h3>{booking.date}</h3>
+            <p>Email: {booking.clientemail}</p>
+            <p>Phone: {booking.phone}</p>
+            <p>Mooring: {booking.mooring}</p>
+            <p>Boat Name: {booking.boatname}</p>
+            <p>Type of Boat: {booking.typeboat}</p>
+            <p>Length: {booking.length}</p>
+            <p>Description: {booking.description}</p>
+            <p>Wishlist: {booking.wishlist}</p>
+            <p>Tides</p>
+            {todaysTides.map((tide, index) => (
+              <div key={index}>
+                {tide.height}m {tide.type} at {tide.dateTime.split(" ")[1]}
+              </div>
+            ))}
+            <button onClick={deleteBooking}>Delete Booking</button>
+          </div>
+        )}
+      </div>
     </div>
   );
 };
