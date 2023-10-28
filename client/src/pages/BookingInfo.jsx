@@ -181,6 +181,7 @@ const BookingInfo = () => {
             <p>Tides</p>
             {todaysTides.map((tide, index) => (
               <div key={index}>
+                {tide.type === "high" ? "▲" : "▼"} {tide.height}m at{" "}
                 {tide.height}m {tide.type} at {tide.dateTime.split(" ")[1]}
               </div>
             ))}

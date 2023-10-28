@@ -55,7 +55,8 @@ const Home = () => {
           <h4>Todays tides</h4>
           {todaysTides.map((tide, index) => (
             <div key={index}>
-              {tide.height}m at {tide.dateTime.split(" ")[1]}
+              {tide.type === "high" ? "▲" : "▼"} {tide.height}m at{" "}
+              {tide.dateTime.split(" ")[1]}
             </div>
           ))}
         </div>
