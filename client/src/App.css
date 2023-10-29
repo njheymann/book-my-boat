@@ -22,6 +22,10 @@
   scrollbar-width: none;
 }
 
+p {
+  word-wrap: break-word;
+}
+
 /* CSS LOADER */
 
 .loader {
