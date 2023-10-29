@@ -9,11 +9,15 @@ const BookingInfo = () => {
   const [editBooking] = useMutation(EDIT_BOOKING);
   const [editMode, setEditMode] = useState(false);
 
-  const deleteBooking = () => {
-    removeBooking({
-      variables: { bookingId: booking._id },
-    });
-    window.location.href = ".././home";
+  const deleteBooking = async () => {
+    try {
+      await removeBooking({
+        variables: { bookingId: booking._id },
+      });
+      window.location.href = ".././home";
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   const { id } = useParams();
