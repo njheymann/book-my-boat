@@ -1,6 +1,4 @@
 /* eslint-disable react/no-unescaped-entities */
-import { Link } from "react-router-dom";
-
 import Auth from "../../utils/auth";
 
 const Header = () => {
