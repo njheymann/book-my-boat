@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { GET_ME, LOCATIONS, TIDES } from "../utils/queries";
 
+
 const Home = () => {
   // Format dates for tide query
   const todaysDate = new Date();

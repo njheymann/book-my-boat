@@ -2,13 +2,12 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../utils/mutations";
-
+import Home from "./Home";
 import Auth from "../utils/auth";
 
 const Login = () => {
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [login, { error }] = useMutation(LOGIN_USER);
-  const [loggedIn, setLoggedIn] = useState(false);
 
   // Update state based on form input changes
   const handleChange = (event) => {
@@ -30,7 +29,6 @@ const Login = () => {
       });
 
       Auth.login(data.login.token);
-      setLoggedIn(true);
       window.location.href = "./home";
     } catch (e) {
       console.error(e);
@@ -49,8 +47,8 @@ const Login = () => {
         <div className="card">
           <p>Bookings and tides...all in the one place</p>
           <div className="card-body">
-            {loggedIn ? (
-              <div className="loader"></div>
+            {Auth.loggedIn() ? (
+              <Home></Home>
             ) : (
               <form onSubmit={handleFormSubmit}>
                 <input
