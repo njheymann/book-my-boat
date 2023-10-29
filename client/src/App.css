@@ -10,10 +10,9 @@
   font-family: "Playfair", serif;
 }
 
-@media (max-width: 380px) {
+@media (max-width: 480px) {
   #root {
-    width: 300px;
-    margin: 10px;
+    width: 380px;
   }
 }
 
