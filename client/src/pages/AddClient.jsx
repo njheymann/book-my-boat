@@ -32,7 +32,7 @@ const Booking = () => {
   // Checks for values inputed in the form and adds them to the database
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
+
     try {
       await addBooking({
         variables: { ...formState },

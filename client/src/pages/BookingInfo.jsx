@@ -78,7 +78,7 @@ const BookingInfo = () => {
   // Handles the form sumit for editing a booking
   const handleEditFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
+
     try {
       await editBooking({
         variables: { ...formState, bookingId: booking._id },

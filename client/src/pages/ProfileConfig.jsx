@@ -7,7 +7,6 @@ const ProfileConfig = () => {
   // Grab user data
   const { data: userData } = useQuery(GET_ME);
   const me = userData?.me || {};
-  console.log({ me });
 
   // Inject user data into location query, this request grabs the postcode and sends it to our third-party API
   const { data: locationData } = useQuery(LOCATIONS, {
@@ -33,7 +32,6 @@ const ProfileConfig = () => {
   // This is the function that submits the form, it takes the formstate and adds it to the database
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
     try {
       await addLocation({
         variables: { ...formState },

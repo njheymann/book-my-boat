@@ -31,7 +31,6 @@ const Signup = () => {
   // This is the function that submits the form, it takes the formstate and adds it to the database
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log(formState);
 
     try {
       const { data } = await addUser({

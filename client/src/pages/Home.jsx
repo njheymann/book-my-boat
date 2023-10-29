@@ -9,13 +9,10 @@ const Home = () => {
   const month = String(todaysDate.getMonth() + 1).padStart(2, "0");
   const day = String(todaysDate.getDate()).padStart(2, "0");
   const formattedDate = `${year}-${month}-${day}`;
-  console.log(formattedDate);
 
   // Grab user data
   const { data: userData, loading: userLoading } = useQuery(GET_ME);
   const me = userData?.me || {};
-  console.log({ me });
-  console.log(me.bookings);
 
   // Inject user data into location query
   const { data: locationData, loading: locationLoading } = useQuery(LOCATIONS, {
@@ -32,7 +29,6 @@ const Home = () => {
 
   // Grab todays tides and set as an object
   const todaysTides = tides.forecasts?.tides?.days[0]?.entries || [];
-  console.log({ todaysTides });
 
   // Sort bookings by date in ascending order
   const sortedBookings = me.bookings?.slice().sort((a, b) => {
