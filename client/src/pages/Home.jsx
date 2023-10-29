@@ -75,7 +75,7 @@ const Home = () => {
       <div className="booking-container">
         {userLoading || locationLoading ? (
           <div className="loader"></div>
-        ) : (
+        ) : sortedBookings && sortedBookings.length > 0 ? (
           sortedBookings?.map((booking) => (
             <Link to={`/bookinginfo/${booking._id}`} key={booking._id}>
               <div key={booking._id} className="booking">
@@ -87,6 +87,8 @@ const Home = () => {
               </div>
             </Link>
           ))
+        ) : (
+          <h1>No bookings yet!</h1>
         )}
       </div>
     </main>
