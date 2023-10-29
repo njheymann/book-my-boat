@@ -1,5 +1,6 @@
 #root {
   max-width: 1280px;
+  width: 700px;
   border-radius: 5px;
   margin: 0 auto;
   margin-top: 50px;
@@ -9,10 +10,39 @@
   font-family: "Playfair", serif;
 }
 
+@media (max-width: 480px) {
+  #root {
+    width: 380px;
+  }
+}
+
 ::-webkit-scrollbar {
   display: none;
   -ms-overflow-style: none;
   scrollbar-width: none;
+}
+
+/* CSS LOADER */
+
+.loader {
+  width: 48px;
+  height: 48px;
+  background: #3f4045;
+  display: inline-block;
+  border-radius: 50%;
+  box-sizing: border-box;
+  animation: animloader 1s ease-in infinite;
+}
+
+@keyframes animloader {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
 }
 
 body {
@@ -91,7 +121,8 @@ header {
 }
 
 /* Main Page */
-.booking {
+.booking,
+.location {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -163,17 +194,11 @@ header {
 }
 
 .location {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 10px;
-  border: 1px solid #000000;
-  background-color: white;
-  border-radius: 5px;
-  width: 200px;
+  width: 150px;
   height: 100px;
-  padding: 10px;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
 }
 
 .selected {
@@ -282,11 +307,9 @@ header {
   color: #fcfcfc;
   background-color: #5d737e;
   border-radius: 5px;
-  width: 300px;
+
   padding: 10px;
-  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
-    rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
-    rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
 .booking-info button {

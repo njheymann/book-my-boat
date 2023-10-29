@@ -12,20 +12,20 @@ const Home = () => {
   console.log(formattedDate);
 
   // Grab user data
-  const { data: userData } = useQuery(GET_ME);
+  const { data: userData, loading: userLoading } = useQuery(GET_ME);
   const me = userData?.me || {};
   console.log({ me });
   console.log(me.bookings);
 
   // Inject user data into location query
-  const { data: locationData } = useQuery(LOCATIONS, {
+  const { data: locationData, loading: locationLoading } = useQuery(LOCATIONS, {
     variables: { postcode: me.postcode },
   });
   const locations = locationData?.locations || [];
   console.log({ locations });
 
   // Inject user data and formatted date into tide query
-  const { data: tideData } = useQuery(TIDES, {
+  const { data: tideData, loading: tideLoading } = useQuery(TIDES, {
     variables: { idlocation: me.idlocation, date: formattedDate },
   });
   const tides = tideData?.tides || [];
@@ -44,23 +44,28 @@ const Home = () => {
 
   return (
     <main>
-      <div className="welcome-container">
-        <div className="welcome-info">
-          <h4>Welcome {me.username}</h4>
-          <p>Company {me.company}</p>
-          <p>Location {me.location} </p>
-        </div>
+      {tideLoading || userLoading || locationLoading ? (
+        <div className="loader"></div>
+      ) : (
+        <div className="welcome-container">
+          <div className="welcome-info">
+            <h4>Welcome {me.username}</h4>
+            <p>Company {me.company}</p>
+            <p>Location {me.location} </p>
+          </div>
 
-        <div className="todays-tides">
-          <h4>Todays tides</h4>
-          {todaysTides.map((tide, index) => (
-            <div key={index}>
-              {tide.type === "high" ? "▲" : "▼"} {tide.height}m at{" "}
-              {tide.dateTime.split(" ")[1]}
-            </div>
-          ))}
+          <div className="todays-tides">
+            <h4>Todays tides</h4>
+
+            {todaysTides.map((tide, index) => (
+              <div key={index}>
+                {tide.type === "high" ? "▲" : "▼"} {tide.height}m at{" "}
+                {tide.dateTime.split(" ")[1]}
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
       <div className="new-booking">
         <button className="new-booking">
           <Link to="/booking">New Booking</Link>
@@ -68,17 +73,21 @@ const Home = () => {
       </div>
       <h3>Bookings</h3>
       <div className="booking-container">
-        {sortedBookings?.map((booking) => (
-          <Link to={`/bookinginfo/${booking._id}`} key={booking._id}>
-            <div key={booking._id} className="booking">
-              <h3>{booking.date}</h3>
-              <p>Client: {booking.name}</p>
-              <p>Name of boat: {booking.boatname}</p>
-              <p>{booking.length}</p>
-              <p>Click for more info</p>
-            </div>
-          </Link>
-        ))}
+        {userLoading || locationLoading ? (
+          <div className="loader"></div>
+        ) : (
+          sortedBookings?.map((booking) => (
+            <Link to={`/bookinginfo/${booking._id}`} key={booking._id}>
+              <div key={booking._id} className="booking">
+                <h3>{booking.date}</h3>
+                <p>Client: {booking.name}</p>
+                <p>Name of boat: {booking.boatname}</p>
+                <p>{booking.length}</p>
+                <p>Click for more info</p>
+              </div>
+            </Link>
+          ))
+        )}
       </div>
     </main>
   );

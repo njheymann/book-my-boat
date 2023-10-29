@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
-
 import Auth from "../utils/auth";
 
 const Signup = () => {
+  // Setting formstate for signup form
   const [formState, setFormState] = useState({
     username: "",
     email: "",
@@ -15,8 +14,11 @@ const Signup = () => {
     location: "",
     postcode: "",
   });
+
+  // Setting the mutation for adding a user
   const [addUser, { error, data }] = useMutation(ADD_USER);
 
+  // This is the function that handles the change in the form
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -26,6 +28,7 @@ const Signup = () => {
     });
   };
 
+  // This is the function that submits the form, it takes the formstate and adds it to the database
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(formState);

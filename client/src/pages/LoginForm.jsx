@@ -10,7 +10,7 @@ const Login = () => {
   const [login, { error }] = useMutation(LOGIN_USER);
   const [loggedIn, setLoggedIn] = useState(false);
 
-  // update state based on form input changes
+  // Update state based on form input changes
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -20,7 +20,7 @@ const Login = () => {
     });
   };
 
-  // submit form
+  // Submit form
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(formState);
@@ -36,7 +36,7 @@ const Login = () => {
       console.error(e);
     }
 
-    // clear form values
+    // Clear form values
     setFormState({
       email: "",
       password: "",
@@ -50,10 +50,7 @@ const Login = () => {
           <p>Bookings and tides...all in the one place</p>
           <div className="card-body">
             {loggedIn ? (
-              <p>
-                Success! You may now head{" "}
-                <Link to="/home">back to the homepage.</Link>
-              </p>
+              <div className="loader"></div>
             ) : (
               <form onSubmit={handleFormSubmit}>
                 <input
@@ -72,6 +69,7 @@ const Login = () => {
                   value={formState.password}
                   onChange={handleChange}
                 />
+                <br></br>
                 <button
                   className="btn btn-block btn-primary"
                   style={{ cursor: "pointer" }}

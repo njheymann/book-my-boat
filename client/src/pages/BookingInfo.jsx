@@ -5,10 +5,14 @@ import { GET_ME, TIDES, GET_BOOKING } from "../utils/queries";
 import { REMOVE_BOOKING, EDIT_BOOKING } from "../utils/mutations";
 
 const BookingInfo = () => {
+  // Setting mutations
   const [removeBooking] = useMutation(REMOVE_BOOKING);
   const [editBooking] = useMutation(EDIT_BOOKING);
+
+  // Setting state for editmode
   const [editMode, setEditMode] = useState(false);
 
+  // Delete booking by ID
   const deleteBooking = async () => {
     try {
       await removeBooking({
@@ -20,30 +24,34 @@ const BookingInfo = () => {
     }
   };
 
+  // Setting params for booking ID
   const { id } = useParams();
-  console.log({ id });
-  const { data: bookingData } = useQuery(GET_BOOKING, {
+
+  // Get booking data and create loading variable
+  const { data: bookingData, loading: bookingLoading } = useQuery(GET_BOOKING, {
     variables: { bookingId: id },
   });
   const booking = bookingData?.booking || {};
-  console.log({ booking });
 
-  const { data: userData } = useQuery(GET_ME);
+  // Get user data and creating loading variable
+  const { data: userData, loading: userLoading } = useQuery(GET_ME);
   const me = userData?.me || {};
-  console.log({ me });
 
-  const { data: tideData } = useQuery(TIDES, {
+  // Get tide data and create loading variable
+  const { data: tideData, loading: tideLoading } = useQuery(TIDES, {
     variables: { idlocation: me.idlocation, date: booking.date },
   });
   const tides = tideData?.tides || [];
 
+  // Variable that fetches tides for today
   const todaysTides = tides.forecasts?.tides?.days[0]?.entries || [];
-  console.log({ todaysTides });
 
+  // Toggle edit mode function
   const toggleEditMode = () => {
     setEditMode(!editMode);
   };
 
+  // Setting state for the form when in edit mode, will keep any values that dont get changed.
   const [formState, setFormState] = useState({
     name: booking.name,
     clientemail: booking.clientmail,
@@ -57,6 +65,7 @@ const BookingInfo = () => {
     wishlist: booking.wishlist,
   });
 
+  // Update state based on form input changes
   const handleEditBooking = (event) => {
     const { name, value } = event.target;
 
@@ -66,6 +75,7 @@ const BookingInfo = () => {
     });
   };
 
+  // Handles the form sumit for editing a booking
   const handleEditFormSubmit = async (event) => {
     event.preventDefault();
     console.log(formState);
@@ -79,7 +89,9 @@ const BookingInfo = () => {
     }
   };
 
-  return (
+  return bookingLoading || userLoading || tideLoading ? (
+    <div className="loader"></div>
+  ) : (
     <div>
       <h3>Booking Info for {booking.name}</h3>
       <button>
@@ -186,7 +198,7 @@ const BookingInfo = () => {
             {todaysTides.map((tide, index) => (
               <div key={index}>
                 {tide.type === "high" ? "▲" : "▼"} {tide.height}m at{" "}
-                {tide.height}m {tide.type} at {tide.dateTime.split(" ")[1]}
+                {tide.dateTime.split(" ")[1]}
               </div>
             ))}
             <button onClick={deleteBooking}>Delete Booking</button>
