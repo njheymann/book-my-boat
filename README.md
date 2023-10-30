@@ -98,7 +98,7 @@ EDIT CLIENT PAGE
 ## Links  
 Github repository: https://github.com/njheymann/book-my-boat  
 Deployed app URL: https://book-my-boat-c0be683581a2.herokuapp.com/  
-
+Presentation URL: https://docs.google.com/presentation/d/1XANBN-xIEqRtrfR2AEtXw-GeVTjAo9tG4NOTR6rk4og/edit?pli=1#slide=id.p
 
 
 
