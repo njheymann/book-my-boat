@@ -3,7 +3,7 @@ A full stack app using the power of react to simplify the booking processes for 
 to access tide information and client information all at your fingertips.  
 
 ## Table of Contents  
-1. [User Story](## User Story)
+1. [User Story](#8)
 
 ## User Story  
 AS a marina manager  
