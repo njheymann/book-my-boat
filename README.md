@@ -44,4 +44,47 @@ THEN I am safely logged out and brought back to the login page
 WHEN I open the app in my phone  
 THEN I am presented with a phone friendly version of the app  
 
+## Directions for use  
+Follow the link to the deployed app on heroku.  
+For viewing purposes login with "nils.heymann@hotmail.com" password: "Password123"
+
+## Screenshots  
+
+LOGIN PAGE  
+![BMB-Login](https://github.com/njheymann/book-my-boat/assets/125000756/f4e58158-e35c-46f2-add2-c293639b508e)  
+
+SIGNUP PAGE  
+![BMB-Signup](https://github.com/njheymann/book-my-boat/assets/125000756/d23bdcc6-da4b-4df2-bda3-30935112ead1)  
+
+PROFILE CONFIG  
+![BMB-Config- Choice](https://github.com/njheymann/book-my-boat/assets/125000756/f059e9a1-50cd-4f3f-b8cb-ff7dd729396a)  
+
+HOMEPAGE W/OUT BOOKINGS  
+![BMB-Homepage](https://github.com/njheymann/book-my-boat/assets/125000756/30dc36fd-37bb-4e82-9209-cda9e5c0bff9)  
+
+HOMEPAGE WITH BOOKINGS  
+![BMB-Home-W-Client](https://github.com/njheymann/book-my-boat/assets/125000756/ed78966c-6581-4d6a-a95b-c0d92279dc2c)  
+
+CLIENT INFO PAGE  
+![BMB-Client-Info](https://github.com/njheymann/book-my-boat/assets/125000756/83adf416-8c96-4ef8-9951-14a6ddeeae77)  
+
+ADD CLIENT PAGE  
+![BMB-Add-Client](https://github.com/njheymann/book-my-boat/assets/125000756/95ff85df-193d-442e-816d-3f5404c9d301)  
+
+EDIT CLIENT PAGE  
+![BMB-Edit-Client-Info](https://github.com/njheymann/book-my-boat/assets/125000756/59242ad8-729d-4b79-ae43-ce188d334dd8)
+
+## Links  
+Github repository: https://github.com/njheymann/book-my-boat  
+Deployed app URL: https://book-my-boat-c0be683581a2.herokuapp.com/  
+
+
+
+
+
+
+
+
+
+
 
