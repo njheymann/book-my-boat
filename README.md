@@ -2,6 +2,9 @@
 A full stack app using the power of react to simplify the booking processes for marina managers, with the power of WillyWeather API  
 to access tide information and client information all at your fingertips.  
 
+## Table of Contents  
+1. [User Story](## User Story)
+
 ## User Story  
 AS a marina manager  
 I WANT an app that allows me to book in clients  
@@ -43,6 +46,19 @@ WHEN I click 'logout'
 THEN I am safely logged out and brought back to the login page  
 WHEN I open the app in my phone  
 THEN I am presented with a phone friendly version of the app  
+
+## Technologies used  
+Node.js/Express.js for server framework  
+
+ApolloServer, Mongoose, GraphQL for database intergration  
+
+Axios for third-party API requests  
+
+Bcrypt/JWT for password hasing and user authentication/authorisation  
+
+React/Vite for front end UI  
+
+Apollo Client for fetching GraphQL APIs  
 
 ## Directions for use  
 Follow the link to the deployed app on heroku.  
