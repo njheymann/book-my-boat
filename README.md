@@ -6,6 +6,9 @@ to access tide information and client information all at your fingertips.
 1. [User Story](#user-story)
 2. [Acceptance Criteria](#acceptance-criteria)
 3. [Technologies Used](#technologies-used)
+4. [Directions for Use](#directions-for-use)
+5. [Screenshots](#screenshots)
+6. [Links](#links)
 
 ## User Story  
 AS a marina manager  
