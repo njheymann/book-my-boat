@@ -1,6 +1,6 @@
 # book-my-boat
-A full stack app using the power of react to simplify the booking processes for marina managers, with the power of WillyWeather API  
-to access tide information and client information all at your fingertips.  
+A full stack app that simplifies the booking processes for marina managers with the power of WillyWeather API  
+for tide information and GraphQL for client information it allows you to ditch the diary and make bookings right at your fingertips.  
 
 ## Table of Contents  
 1. [User Story](#user-story)
